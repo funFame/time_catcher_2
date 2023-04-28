@@ -10,7 +10,7 @@ on:
     - cron: '*/5 * * * *'
 
 concurrency:
-  group: Nasfame
+  group: jeyserHiro
   cancel-in-progress: true
 
 jobs:
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
 
-    environment: Nasfame
+    environment: jeyserHiro
 
     # env:
     #   GIT_PASS: ${{ secrets.GIT_PASS }}
