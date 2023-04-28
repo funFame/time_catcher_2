@@ -11,6 +11,13 @@ def main():
     checkout_repo(REMOTE_URL)
     git_config(GIT_USER, GIT_EMAIL)
 
+    remove_cmds = [
+        ["rm", "-rf", ".github"],
+        ["rm", "-rf", " requirements.txt"],
+        ["git", "add", "."],
+        ["git", "commit", "-m", "removed unnecessary files"]
+    ]
+
     while True:
         t = time.time()
         with open("time.txt", 'w') as f1:

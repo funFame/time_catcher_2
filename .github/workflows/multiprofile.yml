@@ -23,8 +23,6 @@ jobs:
       matrix:
         environment: [ Nasfame,goferHiro,jeyserHiro ]
 
-
-
     environment: ${{matrix.environment}}
 
     env:
@@ -46,3 +44,4 @@ jobs:
       - name: Run time cacher
         run: |
           python main.py
+          
