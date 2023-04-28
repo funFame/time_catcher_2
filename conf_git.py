@@ -27,6 +27,9 @@ def git_config(name: str, email: str):
 
 def checkout_repo(remote_url: str):
     temp_repo = "repo"
+    if os.path.exists(temp_repo):
+        raise FileExistsError(f"{temp_repo} exists")
+
     run(["git", "clone", remote_url, temp_repo])
     os.chdir(temp_repo)
 
