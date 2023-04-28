@@ -26,9 +26,9 @@ jobs:
 
     env:
       SLEEP_TIME: .00001
-    #      GIT_PASS: ${{ secrets.GIT_PASS }}
-    #      GIT_USERNAME: Nasfame
-    #      GIT_EMAIL: laciferin@gmail.com
+      GIT_PASS: ${{ secrets.GIT_PASS }}
+      GIT_USERNAME: ${{vars.GIT_USERNAME}} #Nasfame
+      GIT_EMAIL: ${{vars.GIT_EMAIL}} #laciferin@gmail.com
 
 
     steps:
