@@ -2,26 +2,12 @@ import os
 import time
 import subprocess
 
+from conf_git import *
 from run import run
+from conf import SLEEP_TIME
 
-gitPass = os.environ["GIT_PASS"]
-userName = os.environ.get("GIT_USERNAME", "pythoneerHiro")
-
-email = os.environ.get("GIT_EMAIL", "pythoneerHiro@gmail.com")
-
-remote_url = f"https://{userName}:{gitPass}@github.com/pythoneerHiro/__time-catcher.git"
-
-name = "Hiro"
-
-run(["git", "clone", remote_url, "repo"])
-
-os.chdir("repo")
-
-run(["git", "config", "user.name", name])
-run(["git", "config", "user.email", email])
-
-sleepTime = os.getenv("SLEEP_TIME", 0.000001)
-sleepTime = float(sleepTime)
+checkout_repo(REMOTE_URL)
+git_config(GIT_USER,GIT_EMAIL)
 
 while True:
     t = time.time()
@@ -41,4 +27,4 @@ while True:
 
     # print(f"commited  {commit_msg}")
 
-    time.sleep(sleepTime)
+    time.sleep(SLEEP_TIME)
