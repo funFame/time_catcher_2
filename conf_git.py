@@ -3,12 +3,12 @@ import os
 from conf_log import log
 from run import run
 
-REPO: str = os.environ["GIT_REPO"]
-GIT_PASS: str = os.environ["GIT_PASS"]
+REPO: str = os.environ["GIT_REPO"].strip()
+GIT_PASS: str = os.environ["GIT_PASS"].strip()
 
-GIT_USER: str = os.environ.get("GIT_USER", "Hiro")
-GIT_USERNAME: str = os.environ.get("GIT_USERNAME", "pythoneerHiro")  # u can set what ever u want
-GIT_EMAIL: str = os.environ.get("GIT_EMAIL", "pythoneerHiro@gmail.com")
+GIT_USER: str = os.environ.get("GIT_USER", "Hiro").strip()
+GIT_USERNAME: str = os.environ.get("GIT_USERNAME", "pythoneerHiro").strip()  # u can set what ever u want
+GIT_EMAIL: str = os.environ.get("GIT_EMAIL", "pythoneerHiro@gmail.com").strip()
 
 if len(REPO.split("/")) == 1:
     REPO = f"{GIT_USERNAME}/{REPO}"
