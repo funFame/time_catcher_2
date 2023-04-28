@@ -1,0 +1,44 @@
+name: Multi Profile
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  schedule:
+    - cron: '*/5 * * * *'
+
+concurrency:
+  group: multi_profile
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        environment: [ Nasfame ]
+
+
+    env:
+      SLEEP_TIME: .00001
+      GIT_PASS: ${{ secrets.GIT_PASS }}
+      GIT_USERNAME: ${{vars.GIT_USERNAME}} #Nasfame
+      GIT_EMAIL: ${{vars.GIT_EMAIL}} #laciferin@gmail.com
+      GIT_REPO: "Nasfame/__time-catcher"
+
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python 3.10 on ubuntu-latest
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Run time cacher
+        run: |
+          python main.py
