@@ -7,7 +7,7 @@ LOGGING_CONFIG = {
     'formatters': {
         'form1': {
             'class': 'logging.Formatter',
-            'format': '{levelname} | {message} | {asctime} | {funcName}:{filename}:{lineno}',
+            'format': '{levelname} | {message} {arguments} | {asctime} | {funcName}:{filename}:{lineno}',
             'datefmt': '%d-%m-%Y %H:%M:%S ',
             'style': '{',
         }
@@ -39,3 +39,13 @@ LOGGING_CONFIG = {
 log_config.dictConfig(LOGGING_CONFIG)
 
 log = logging.getLogger("time_catcher")
+
+# log.info = lambda msg,*args: log.info(f""""{msg} { " ".join((map(str,args)))}""")
+
+
+log = logging.getLogger()
+
+# log.info(1,111,1,1,1,1)
+#
+# log.info("rtsr",1,22,3)
+# sys.exit(1)
