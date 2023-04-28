@@ -1,3 +1,4 @@
+import sys
 import time
 
 from conf import SLEEP_TIME
@@ -32,8 +33,8 @@ def main():
             if cmd[1] == "push":
                 if "rejected" in err:
                     log.critical(err)
-                    log.warning("restarting the repo")
-                    return main()
+                    log.warning("existing blissfully")
+                    sys.exit(0)
             if err:
                 log.error(err)
 
