@@ -1,5 +1,6 @@
 import os
 
+from conf_log import log
 from run import run
 
 REPO: str = os.environ["GIT_REPO"]
@@ -20,7 +21,6 @@ def git_config(name: str, email: str):
     if not os.path.exists(".git"):
         raise Exception("Not a git repository")
 
-
     run(["git", "config", "user.name", name])
     run(["git", "config", "user.email", email])
 
@@ -30,7 +30,17 @@ def checkout_repo(remote_url: str):
     if os.path.exists(temp_repo):
         raise FileExistsError(f"{temp_repo} exists")
 
-    run(["git", "clone", remote_url, temp_repo])
+    res, err = run(["git", "clone", remote_url, temp_repo])
+
+    log.info(res)
+
+    if err:
+        log.error(err)
+
+        if "fatal" in err:
+            log.critical(err)
+            raise FileNotFoundError(f"remote url doesn't exist")
+
     os.chdir(temp_repo)
 
 # git_config(name, email)
