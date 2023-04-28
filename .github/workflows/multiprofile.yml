@@ -24,6 +24,8 @@ jobs:
         environment: [ Nasfame ]
 
 
+
+    environment: matrix.environment
     env:
       SLEEP_TIME: .00001
       GIT_PASS: ${{ secrets.GIT_PASS }}
