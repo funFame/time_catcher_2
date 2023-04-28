@@ -1,8 +1,8 @@
-import logging
 import time
 
 from conf import SLEEP_TIME
 from conf_git import *
+from conf_log import log
 from run import run
 
 
@@ -27,15 +27,15 @@ def main():
             res, err = run(cmd)
 
             if res:
-                logging.info(" ".join(cmd), res)
+                log.info(" ".join(cmd), res)
 
             if cmd[1] == "push":
                 if "rejected" in err:
-                    logging.critical(err)
-                    logging.warning("restarting the repo")
+                    log.critical(err)
+                    log.warning("restarting the repo")
                     return main()
             if err:
-                logging.error(err)
+                log.error(err)
 
         time.sleep(SLEEP_TIME)
         # print(f"commited  {commit_msg}")

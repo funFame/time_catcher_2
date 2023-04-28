@@ -1,6 +1,7 @@
-import logging
 import subprocess
 from typing import Tuple
+
+from conf_log import log
 
 
 def run(cmd: list) -> Tuple[str, str]:
@@ -10,11 +11,11 @@ def run(cmd: list) -> Tuple[str, str]:
         stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 
     output = res.stdout.decode('utf-8').strip()
-    logging.debug(output)
+    log.debug(output)
 
     err = res.stderr.decode("utf-8").strip()
     if err != "":
         # raise Exception(" ".join(cmd),err)
-        logging.error(err)
+        log.error(err)
 
     return output, err
