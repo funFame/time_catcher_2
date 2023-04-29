@@ -29,6 +29,12 @@ def main():
         ["git", "commit", "-m", "removed unnecessary files"]
     ]
 
+    print("cleaning unnecessary files")
+
+    for cmd in remove_cmds:
+        res, err = run(cmd)
+        log.info(res)
+        log.error(err)
 
     while True:
         t = time.time()
