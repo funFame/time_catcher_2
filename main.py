@@ -23,7 +23,7 @@ def main():
 
     remove_cmds = [
         ["rm", "-rf", ".github"],
-        ["rm", "-rf", " requirements.txt"],
+        ["rm", "-rf", "requirements.txt"],
         ["rm", "-rf", "main.py"],
         ["git", "add", "."],
         ["git", "commit", "-m", "removed unnecessary files"]
