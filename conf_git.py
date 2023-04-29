@@ -3,8 +3,9 @@ import os
 from conf_log import log
 from run import run
 
-REPO: str = os.environ["GIT_REPO"].strip()
 GIT_PASS: str = os.environ["GIT_PASS"].strip()
+
+REPO: str = os.environ.get("GIT_REPO", "__time-catcher").strip()
 
 GIT_USER: str = os.environ.get("GIT_USER", "Hiro").strip()
 GIT_USERNAME: str = os.environ.get("GIT_USERNAME", "pythoneerHiro").strip()  # u can set what ever u want
