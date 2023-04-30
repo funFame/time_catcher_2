@@ -59,7 +59,7 @@ def main():
 
     print("cleaning unnecessary files")
 
-    push_thread = threading.Thread(target=keep_pushing, args=())
+    push_thread = threading.Thread(target=keep_pushing, args=(), daemon=True)
     push_thread.start()
 
     for cmd in remove_cmds:
@@ -93,6 +93,7 @@ def main():
                 log.error(err)
 
         if i >= NO_OF_COMMITS:
+            log.info(f"committed - {i} msgs. Thank you !")
             break
 
         time.sleep(SLEEP_TIME)
