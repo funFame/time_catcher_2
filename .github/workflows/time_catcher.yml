@@ -19,7 +19,7 @@ jobs:
 
     env:
       GIT_PASS: ${{ secrets.GIT_PASS }}
-      SLEEP_TIME: .0001
+      SLEEP_TIME: 0
       GIT_USERNAME: pythoneerHiro
       GIT_USER: Hiro
       GIT_REPO: "pythoneerHiro/__time-catcher"

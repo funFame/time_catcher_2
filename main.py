@@ -1,4 +1,5 @@
 import sys
+import threading
 import time
 from datetime import timedelta, datetime
 
@@ -17,9 +18,27 @@ def now(utc_offset=timedelta(hours=5, minutes=30)) -> datetime:  # default ist
     return now_ist
 
 
+def git_push():
+    cmd = ["git", "push"]
+
+    res, err = run(cmd)
+
+    log.info(res)
+
+    if "rejected" in err:
+        log.critical(err)
+        log.warning("existing blissfully")
+        sys.exit(0)
+
+
 def main():
     checkout_repo(REMOTE_URL)
     git_config(GIT_USER, GIT_EMAIL)
+
+    now_ = now(timedelta(hours=5, minutes=30))
+
+    with open("time_catcher.log", 'a') as f1:
+        f1.write(f"started time_catcher on {now_}")
 
     remove_cmds = [
         ["rm", "-rf", ".github"],
@@ -31,24 +50,25 @@ def main():
 
     print("cleaning unnecessary files")
 
+    push_thread = threading.Thread(target=git_push, args=())
+    push_thread.start()
+
     for cmd in remove_cmds:
         res, err = run(cmd)
         log.info(res)
         log.error(err)
 
     while True:
-        t = time.time()
         now_ = now(timedelta(hours=5, minutes=30))
 
         with open("time.txt", 'w') as f1:
             f1.write(str(now_))
 
-        commit_msg = f"time: {str(now_)}"
+        commit_msg = f"time: {now_}"
 
         commands = [
             ["git", "add", "time.txt"],
             ["git", "commit", "-m", commit_msg],
-            ["git", "push"]
         ]
 
         for cmd in commands:
@@ -57,11 +77,6 @@ def main():
             if res:
                 log.info(" ".join(cmd), res)
 
-            if cmd[1] == "push":
-                if "rejected" in err:
-                    log.critical(err)
-                    log.warning("existing blissfully")
-                    sys.exit(0)
             if err:
                 log.error(err)
 
@@ -70,4 +85,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except Exception as e:
+        log.exception(e)
+    finally:
+        log.info("git pushing rest of the commits")
+        git_push()
+        log.info("pushed all th commits")

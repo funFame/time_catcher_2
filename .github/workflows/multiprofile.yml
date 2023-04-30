@@ -26,7 +26,7 @@ jobs:
     environment: ${{matrix.environment}}
 
     env:
-      SLEEP_TIME: .00001
+      SLEEP_TIME: 0
       GIT_PASS: ${{ secrets.GIT_PASS }}
       GIT_USERNAME: ${{vars.GIT_USERNAME}}
       GIT_EMAIL: ${{vars.GIT_EMAIL}}
