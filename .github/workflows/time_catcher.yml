@@ -23,6 +23,7 @@ jobs:
       GIT_USERNAME: pythoneerHiro
       GIT_USER: Hiro
       GIT_REPO: "pythoneerHiro/__time-catcher"
+      NO_OF_COMMITS: 100000
 
     steps:
       - uses: actions/checkout@v3

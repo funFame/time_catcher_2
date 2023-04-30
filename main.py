@@ -1,3 +1,4 @@
+import math
 import sys
 import threading
 import time
@@ -31,9 +32,17 @@ def git_push():
         sys.exit(0)
 
 
+def keep_pushing(interval=timedelta(minutes=1)):
+    while True:
+        git_push()
+        time.sleep(interval.total_seconds())
+
+
 def main():
     checkout_repo(REMOTE_URL)
     git_config(GIT_USER, GIT_EMAIL)
+
+    NO_OF_COMMITS = os.getenv("NO_OF_COMMITS", math.inf)
 
     now_ = now(timedelta(hours=5, minutes=30))
 
@@ -50,7 +59,7 @@ def main():
 
     print("cleaning unnecessary files")
 
-    push_thread = threading.Thread(target=git_push, args=())
+    push_thread = threading.Thread(target=keep_pushing, args=())
     push_thread.start()
 
     for cmd in remove_cmds:
@@ -58,7 +67,10 @@ def main():
         log.info(res)
         log.error(err)
 
+    i = 0
     while True:
+        i += 1
+
         now_ = now(timedelta(hours=5, minutes=30))
 
         with open("time.txt", 'w') as f1:
@@ -79,6 +91,9 @@ def main():
 
             if err:
                 log.error(err)
+
+        if i >= NO_OF_COMMITS:
+            break
 
         time.sleep(SLEEP_TIME)
         # print(f"commited  {commit_msg}")
