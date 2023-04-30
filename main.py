@@ -92,7 +92,7 @@ def main():
             if err:
                 log.error(err)
 
-        if i >= NO_OF_COMMITS:
+        if i == NO_OF_COMMITS:
             log.info(f"committed - {i} msgs. Thank you !")
             break
 
