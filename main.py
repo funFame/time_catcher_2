@@ -42,7 +42,7 @@ def main():
     checkout_repo(REMOTE_URL)
     git_config(GIT_USER, GIT_EMAIL)
 
-    NO_OF_COMMITS = os.getenv("NO_OF_COMMITS", math.inf)
+    NO_OF_COMMITS = float(os.getenv("NO_OF_COMMITS", math.inf))
 
     now_ = now(timedelta(hours=5, minutes=30))
 
