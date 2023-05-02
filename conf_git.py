@@ -31,7 +31,7 @@ def checkout_repo(remote_url: str):
     if os.path.exists(temp_repo):
         raise FileExistsError(f"{temp_repo} exists")
 
-    res, err = run(["git", "clone", "--depth=1 ", remote_url, temp_repo])
+    res, err = run(["git", "clone", "--depth=1", remote_url, temp_repo])
 
     log.info(res)
 
