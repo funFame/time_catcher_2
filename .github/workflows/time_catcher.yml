@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '*/20 * * * *'
+    - cron: '*/5 * * * *'
 
 concurrency:
   group: time-catcher
@@ -26,7 +26,7 @@ jobs:
       GIT_USERNAME: pythoneerHiro
       GIT_USER: Hiro
       GIT_REPO: "pythoneerHiro/__time"
-      NO_OF_COMMITS: 100000
+      NO_OF_COMMITS: 100
 
     steps:
       - uses: actions/checkout@v3
