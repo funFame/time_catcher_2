@@ -29,7 +29,7 @@ jobs:
       GIT_USERNAME: pythoneerHiro
       GIT_USER: Hiro
       GIT_REPO: "pythoneerHiro/__time"
-      NO_OF_COMMITS: 1000
+      NO_OF_COMMITS: 50
 
     steps:
       - uses: actions/checkout@v3

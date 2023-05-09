@@ -31,7 +31,7 @@ jobs:
       GIT_USERNAME: ${{vars.GIT_USERNAME}}
       GIT_EMAIL: ${{vars.GIT_EMAIL}}
       #GIT_REPO: ${{vars.GIT_REPO}}
-      NO_OF_COMMITS: 1000
+      NO_OF_COMMITS: 50
 
 
     steps:
