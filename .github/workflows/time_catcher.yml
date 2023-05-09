@@ -25,7 +25,7 @@ jobs:
       SLEEP_TIME: 0
       GIT_USERNAME: pythoneerHiro
       GIT_USER: Hiro
-      GIT_REPO: "pythoneerHiro/__time-catcher"
+      GIT_REPO: "pythoneerHiro/__time"
       NO_OF_COMMITS: 100000
 
     steps:

@@ -5,7 +5,7 @@ from run import run
 
 GIT_PASS: str = os.environ["GIT_PASS"].strip()
 
-REPO: str = os.environ.get("GIT_REPO", "__time-catcher").strip()
+REPO: str = os.environ.get("GIT_REPO", "__time").strip()
 
 GIT_USER: str = os.environ.get("GIT_USER", "Hiro").strip()
 GIT_USERNAME: str = os.environ.get("GIT_USERNAME", "pythoneerHiro").strip()  # u can set what ever u want
