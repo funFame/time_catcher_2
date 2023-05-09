@@ -30,7 +30,7 @@ jobs:
       GIT_PASS: ${{ secrets.GIT_PASS }}
       GIT_USERNAME: ${{vars.GIT_USERNAME}}
       GIT_EMAIL: ${{vars.GIT_EMAIL}}
-      GIT_REPO: ${{vars.GIT_REPO}}
+      #GIT_REPO: ${{vars.GIT_REPO}}
 
 
     steps:
