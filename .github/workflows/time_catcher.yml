@@ -37,7 +37,7 @@ jobs:
       GIT_USERNAME: Nasfame
       GIT_EMAIL: laciferin@gmail.com
       GIT_USER: Hiro
-      GIT_REPO: ${ { matrix.GIT_REPO } }
+      GIT_REPO: ${{ matrix.GIT_REPO }}
       NO_OF_COMMITS: 20
       SLEEP_TIME: 1
 
