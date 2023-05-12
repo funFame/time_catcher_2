@@ -26,6 +26,7 @@ jobs:
     env:
       GIT_PASS: ${{ secrets.GIT_PASS }}
       GIT_USERNAME: Nasfame
+      GIT_EMAIL: laciferin@gmail.com
       GIT_USER: Hiro
       GIT_REPO: "funFame/_time"
       NO_OF_COMMITS: 2

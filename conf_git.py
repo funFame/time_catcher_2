@@ -8,8 +8,8 @@ GIT_PASS: str = os.environ["GIT_PASS"].strip()
 REPO: str = os.environ.get("GIT_REPO", "__time").strip()
 
 GIT_USER: str = os.environ.get("GIT_USER", "Hiro").strip()
-GIT_USERNAME: str = os.environ.get("GIT_USERNAME", "pythoneerHiro").strip()  # u can set what ever u want
-GIT_EMAIL: str = os.environ.get("GIT_EMAIL", "pythoneerHiro@gmail.com").strip()
+GIT_USERNAME: str = os.environ.get("GIT_USERNAME", "Nasfame").strip()  # u can set what ever u want
+GIT_EMAIL: str = os.environ.get("GIT_EMAIL", "laciferin@gmail.com").strip()
 
 if len(REPO.split("/")) == 1:
     REPO = f"{GIT_USERNAME}/{REPO}"
