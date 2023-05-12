@@ -28,8 +28,8 @@ jobs:
       GIT_USERNAME: Nasfame
       GIT_USER: Hiro
       GIT_REPO: "funFame/_time"
-      NO_OF_COMMITS: 1000
-      SLEEP_TIME: 0.
+      NO_OF_COMMITS: 2
+      SLEEP_TIME: 1
 
     steps:
       - uses: actions/checkout@v3
