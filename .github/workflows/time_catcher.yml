@@ -29,9 +29,11 @@ jobs:
 
       matrix:
         GIT_REPO:
-          - Nasfame/__time
+          - Nasfame/___time_2023
           - funFame/_time
           - funFame/__time
+          - funFame/_time_2023
+          - funFame/__time_2023
 
     env:
       GIT_PASS: ${{ secrets.GIT_PASS }}
