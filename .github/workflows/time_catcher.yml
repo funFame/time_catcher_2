@@ -49,6 +49,6 @@ jobs:
           python-version: "3.10"
       #          cache: 'pip'
 
-      - name: Run time cacher for {{env.GIT_REPO}}
+      - name: Run time cacher for ${{env.GIT_REPO}}
         run: |
           python main.py
