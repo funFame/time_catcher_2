@@ -26,10 +26,10 @@ jobs:
     env:
       GIT_PASS: ${{ secrets.GIT_PASS }}
       SLEEP_TIME: 0
-      GIT_USERNAME: pythoneerHiro
+      GIT_USERNAME: Nasfame
       GIT_USER: Hiro
       GIT_REPO: "funFame/_time"
-      NO_OF_COMMITS: 50
+      NO_OF_COMMITS: 1
 
     steps:
       - uses: actions/checkout@v3
