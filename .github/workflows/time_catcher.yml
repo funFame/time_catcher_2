@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: '* */1 * * *'
+    - cron: '* */2 * * *'
 
 concurrency:
   group: time-catcher
@@ -41,8 +41,8 @@ jobs:
       GIT_EMAIL: laciferin@gmail.com
       GIT_USER: Hiro
       GIT_REPO: ${{ matrix.GIT_REPO }}
-      NO_OF_COMMITS: 50
-      SLEEP_TIME: .3
+      NO_OF_COMMITS: 100
+      SLEEP_TIME: .9
 
     steps:
       - uses: actions/checkout@v3
