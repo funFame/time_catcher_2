@@ -29,7 +29,7 @@ def git_push():
     if "rejected" in err:
         log.critical(err)
         log.warning("existing blissfully")
-        sys.exit(0)
+        sys.exit(1)
 
 
 def keep_pushing(interval=timedelta(minutes=1)):
