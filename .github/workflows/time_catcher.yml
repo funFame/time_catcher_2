@@ -42,7 +42,7 @@ jobs:
       GIT_USER: Hiro
       GIT_REPO: ${{ matrix.GIT_REPO }}
       NO_OF_COMMITS: 100
-      SLEEP_TIME: .9
+      SLEEP_TIME: 2
 
     steps:
       - uses: actions/checkout@v3
