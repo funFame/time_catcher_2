@@ -46,7 +46,7 @@ def main():
 
     now_ = now(timedelta(hours=5, minutes=30))
 
-    with open("app.log", "r+") as f1:
+    with open("app.log", "w+") as f1:
         cnt = f1.readlines()
         if len(cnt) > 1_485_760:
             cnt = [f"truncating {len(cnt)} on {now_}"]
