@@ -46,8 +46,13 @@ def main():
 
     now_ = now(timedelta(hours=5, minutes=30))
 
-    with open("time_catcher.log", 'a') as f1:
-        f1.write(f"started time_catcher on {now_}")
+    with open("time_catcher.log", "r+") as f1:
+        cnt = f1.readlines()
+        if len(cnt) > 1_485_760:
+            cnt = [f"truncating {len(cnt)} on {now_}"]
+        cnt.insert(0, f"started {now_}")
+
+        f1.writelines(cnt)
 
     remove_cmds = [
         ["rm", "-rf", ".github"],
