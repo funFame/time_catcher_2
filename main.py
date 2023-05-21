@@ -50,7 +50,7 @@ def main():
         cnt = f1.readlines()
         if len(cnt) > 1_485_760:
             cnt = [f"truncating {len(cnt)} on {now_}"]
-        cnt.insert(0, f"started {now_}")
+        cnt = [f"started {now_}"] + cnt
 
         f1.writelines(cnt)
 
