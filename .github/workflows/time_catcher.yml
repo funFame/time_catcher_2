@@ -24,12 +24,12 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
-      max-parallel: 3
+      max-parallel: 4
       fail-fast: false
 
       matrix:
         GIT_REPO:
-#          - Nasfame/___time_2023
+          - Nasfame/___time_2023
           - Nasfame/___time
           - funFame/_time
           - funFame/__time
