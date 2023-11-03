@@ -4,6 +4,8 @@ name: Keep the CI on
 
 on:
   push:
+    paths:
+      - '.github/*'
   workflow_dispatch:
   schedule:
     - cron: '1 1 */10 * *'
