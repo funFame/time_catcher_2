@@ -1,0 +1,54 @@
+name: Keep the CI on
+
+# github disables workflows if no activity for 60 days
+
+on:
+#   push:
+  workflow_dispatch:
+  schedule:
+    - cron: '1 1 */10 * *'
+
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  actions: write
+  contents: write
+
+
+jobs:
+  prettier:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+          ref: ${{ github.head_ref }}
+          persist-credentials: true
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.6.6
+
+      - name: Git config
+        run: |
+          git config --global user.name Hiro
+          git config --global user.email laciferin@gmail.com
+
+      - name: Add File
+        run: |
+         date +'%d-%m-%y %H:%M' > date.txt
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+         commit_message: Date By Baymax
+         commit_options: '--no-verify --signoff'
+         add_options: '-u'
+         branch: 'cron/date'
+         create_branch: true
+
+
+          
