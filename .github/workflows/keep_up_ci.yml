@@ -1,10 +1,12 @@
-name: Prettier
+name: Keep the CI on
+
+# github disables workflows if no activity for 60 days
 
 on:
 #   push:
   workflow_dispatch:
   schedule:
-    - cron: '* * */2 * *'
+    - cron: '1 1 */10 * *'
 
 
 concurrency:
@@ -36,36 +38,17 @@ jobs:
           git config --global user.name Hiro
           git config --global user.email laciferin@gmail.com
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          cache: 'pnpm'
-          node-version: 20
-          check-latest: false
-
-      - name: Install dependencies
-        continue-on-error: true
-        run: pnpm install
-
-
-      - name: Create .prettierignore
-        shell: bash
+      - name: Add File
         run: |
-          cp .prettierignore .prettierignore.ci
-          echo ".github/workflows/${GITHUB_WORKFLOW}.yaml" >> .prettierignore.ci
-          echo ".github/workflows/*.yaml" >> .prettierignore.ci
+         date +'%d-%m-%y %H:%M' > date.txt
 
-      - name: Prettify code
-        uses: creyD/prettier_action@v4.3
-        env:
-          GITHUB_ACTOR: Baymax # ${{github.actor}}
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          dry: false
-          github_token: ${{ github.token }}
-          same_commit: false
-          commit_message: 'style: pretty code' 
-          commit_description: 'by ci'
-                  #  file_pattern: "**/*.{js,jsx,ts,tsx,css,scss,html,vue,json,md}`"
-          only_changed: ${{ env.ONLY_CHANGED }}
-          prettier_options: '--write . --ignore-path .prettierignore.ci'
+         commit_message: By Baymax
+         commit_options: '--no-verify --signoff'
+         add_options: '-u'
+         branch: 'cron/date'
+         create_branch: true
 
+
+          
