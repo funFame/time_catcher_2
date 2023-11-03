@@ -3,7 +3,7 @@ name: Keep the CI on
 # github disables workflows if no activity for 60 days
 
 on:
-#   push:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '1 1 */10 * *'
@@ -43,12 +43,21 @@ jobs:
          date +'%d-%m-%y %H:%M' > date.txt
 
       - uses: stefanzweifel/git-auto-commit-action@v5
+        id: auto-commit
         with:
          commit_message: Date By Baymax
-         commit_options: '--no-verify --signoff'
+         commit_options: '--no-verify --signoff -f'
          add_options: '-u'
          branch: 'cron/date'
          create_branch: true
+
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit.outputs.changes_detected == 'true'
+        run: echo "Changes!"
+  
+      - name: "Run if no changes have been detected"
+        if: steps.auto-commit.outputs.changes_detected == 'false'
+        run: echo "No Changes!"
 
 
           
