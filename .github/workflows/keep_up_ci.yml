@@ -19,7 +19,7 @@ permissions:
 
 
 jobs:
-  prettier:
+  keep-up-cron:
     runs-on: ubuntu-latest
 
     steps:
