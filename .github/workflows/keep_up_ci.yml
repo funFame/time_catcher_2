@@ -46,7 +46,7 @@ jobs:
         id: auto-commit
         with:
          commit_message: Date By Baymax
-         commit_options: '--no-verify --signoff'
+         commit_options: '--no-verify --signoff -f'
          add_options: '-u'
          branch: 'cron/date'
          create_branch: true
