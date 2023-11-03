@@ -3,7 +3,7 @@ name: Keep the CI on
 # github disables workflows if no activity for 60 days
 
 on:
-#   push:
+  push:
   workflow_dispatch:
   schedule:
     - cron: '1 1 */10 * *'
