@@ -56,7 +56,7 @@ jobs:
         run: echo "Changes!"
   
       - name: "Run if no changes have been detected"
-        if: steps.auto-auto-commit.outputs.changes_detected == 'false'
+        if: steps.auto-commit.outputs.changes_detected == 'false'
         run: echo "No Changes!"
 
 
